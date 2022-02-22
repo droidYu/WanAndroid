@@ -2,7 +2,7 @@ package com.droidyu.wanandroid
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.droidyu.wanandroid.ui.LoginFragment
+import com.droidyu.wanandroid.ui.login.LoginFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

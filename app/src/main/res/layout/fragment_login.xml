@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.droidyu.wanandroid.ui.LoginViewModel" />
+            type="com.droidyu.wanandroid.ui.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:onClick="@{vm::login}"
+            android:onClick="@{()->vm.login()}"
             android:text="登录"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

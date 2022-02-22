@@ -1,10 +1,13 @@
 package com.droidyu.wanandroid.di
 
 import android.util.Log
+import com.droidyu.wanandroid.network.Api
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityRetainedComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,6 +17,16 @@ import java.util.concurrent.TimeUnit
 @InstallIn(ActivityRetainedComponent::class)
 @Module
 class NetworkModule {
+
+    @Provides
+    fun provideDispatcher(): CoroutineDispatcher {
+        return Dispatchers.Default
+    }
+
+    @Provides
+    fun provideApi(): Api {
+        return provideRetrofit().create(Api::class.java)
+    }
 
     @Provides
     fun provideRetrofit(): Retrofit {
