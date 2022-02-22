@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.droidyu.wanandroid.R
+import com.droidyu.wanandroid.data.entity.WanResult
 import com.droidyu.wanandroid.databinding.FragmentLoginBinding
 import com.droidyu.wanandroid.ui.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,9 +23,9 @@ class LoginFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.response.observe(this) { response ->
-            if (response.errorCode == 0) {
-                (context)?.let { showToast(it, "success") }
-            } else {
+            if (response is WanResult.Success) {
+                (context)?.let { showToast(it, response.data.toString()) }
+            } else if (response is WanResult.Error) {
                 context?.let { showToast(it, response.errorMsg) }
             }
         }
