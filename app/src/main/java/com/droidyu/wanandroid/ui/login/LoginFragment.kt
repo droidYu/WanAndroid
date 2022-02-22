@@ -16,35 +16,31 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
 
-    lateinit var binding: FragmentLoginBinding
-
     private val viewModel by lazy { ViewModelProvider(this)[LoginViewModel::class.java] }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.response.observe(this) { response ->
-            if (response is WanResult.Success) {
-                (context)?.let { showToast(it, response.data.toString()) }
-            } else if (response is WanResult.Error) {
-                context?.let { showToast(it, response.errorMsg) }
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate<FragmentLoginBinding>(
+        return DataBindingUtil.inflate<FragmentLoginBinding>(
             inflater,
             R.layout.fragment_login,
             container,
             false
         ).apply {
             vm = viewModel
-        }
-        return binding.root
+            viewModel.response.observe(viewLifecycleOwner) { response ->
+                (context)?.let {
+                    showToast(
+                        it, when (response) {
+                            is WanResult.Success -> "登录成功：${response.data.nickname}"
+                            is WanResult.Error -> "登录失败：${response.errorMsg}"
+                        }
+                    )
+                }
+            }
+        }.root
     }
 
 }
