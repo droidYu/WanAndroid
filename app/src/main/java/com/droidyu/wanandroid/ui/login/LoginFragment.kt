@@ -31,14 +31,20 @@ class LoginFragment : Fragment() {
         ).apply {
             vm = viewModel
             viewModel.response.observe(viewLifecycleOwner) { response ->
-                (context)?.let {
-                    showToast(
-                        it, when (response) {
-                            is WanResult.Success -> "登录成功：${response.data.nickname}"
-                            is WanResult.Error -> "登录失败：${response.errorMsg}"
-                        }
-                    )
+                var str = ""
+                when (response) {
+                    is WanResult.Success -> {
+                        str = "登录成功：${response.data.nickname}"
+//                        val navHostFragment=parentFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+//                        navHostFragment.navController.navigate(R.id.action_loginFragment_to_homeFragment)
+                    }
+                    is WanResult.Error -> {
+                        str = "登录失败：${response.errorMsg}"
+                    }
                 }
+
+
+                (context)?.let { showToast(it, str) }
             }
         }.root
     }

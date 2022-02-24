@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.droidyu.wanandroid.ui.home.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.droidyu.wanandroid.ui.mine.MineFragment"
+        android:label="MineFragment">
+        <action
+            android:id="@+id/action_mineFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.droidyu.wanandroid.ui.login.LoginActivity"
+        android:label="LoginActivity" />
+</navigation>
