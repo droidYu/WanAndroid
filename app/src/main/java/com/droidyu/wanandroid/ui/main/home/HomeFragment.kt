@@ -1,4 +1,4 @@
-package com.droidyu.wanandroid.ui.home
+package com.droidyu.wanandroid.ui.main.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

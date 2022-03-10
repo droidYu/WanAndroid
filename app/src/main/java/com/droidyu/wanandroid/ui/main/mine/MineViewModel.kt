@@ -1,4 +1,4 @@
-package com.droidyu.wanandroid.ui.mine
+package com.droidyu.wanandroid.ui.main.mine
 
 import androidx.lifecycle.ViewModel
 

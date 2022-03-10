@@ -1,4 +1,4 @@
-package com.droidyu.wanandroid.ui.tree
+package com.droidyu.wanandroid.ui.main.tree
 
 import android.os.Bundle
 import android.view.LayoutInflater

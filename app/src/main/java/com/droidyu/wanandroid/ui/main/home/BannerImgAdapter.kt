@@ -1,4 +1,4 @@
-package com.droidyu.wanandroid.ui.home
+package com.droidyu.wanandroid.ui.main.home
 
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners

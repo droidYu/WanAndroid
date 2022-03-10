@@ -6,11 +6,11 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.droidyu.wanandroid.ui.home.HomeFragment"
+        android:name="com.droidyu.wanandroid.ui.main.home.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/mineFragment"
-        android:name="com.droidyu.wanandroid.ui.mine.MineFragment"
+        android:name="com.droidyu.wanandroid.ui.main.mine.MineFragment"
         android:label="MineFragment">
         <action
             android:id="@+id/action_mineFragment_to_loginActivity"
@@ -22,6 +22,6 @@
         android:label="LoginActivity" />
     <fragment
         android:id="@+id/treeFragment"
-        android:name="com.droidyu.wanandroid.ui.tree.TreeFragment"
+        android:name="com.droidyu.wanandroid.ui.main.tree.TreeFragment"
         android:label="TreeFragment" />
 </navigation>
