@@ -2,9 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
+        android:icon="@drawable/tab_home"
         android:title="首页" />
     <item
+        android:id="@+id/treeFragment"
+        android:icon="@drawable/tab_tree"
+        android:iconTint="@color/light_blue_700"
+        android:title="体系" />
+    <item
         android:id="@+id/mineFragment"
+        android:icon="@drawable/tab_mine"
+        android:iconTint="@color/light_blue_700"
         android:title="我" />
 
 </menu>

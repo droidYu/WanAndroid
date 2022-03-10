@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.droidyu.wanandroid.data.LoginRepository
 import com.droidyu.wanandroid.data.entity.User
 import com.droidyu.wanandroid.data.entity.WanResult
+import com.droidyu.wanandroid.data.repository.LoginRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

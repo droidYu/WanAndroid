@@ -1,6 +1,7 @@
-package com.droidyu.wanandroid.data
+package com.droidyu.wanandroid.data.repository
 
 import com.droidyu.wanandroid.data.entity.ArticlePage
+import com.droidyu.wanandroid.data.entity.BannerImg
 import com.droidyu.wanandroid.data.entity.WanResponse
 import com.droidyu.wanandroid.network.Api
 import kotlinx.coroutines.CoroutineDispatcher
@@ -20,6 +21,12 @@ class HomeRepository @Inject constructor(
     suspend fun loadMore(page: Int): WanResponse<ArticlePage> {
         return withContext(defaultDispatcher) {
             api.getArticle(page)
+        }
+    }
+
+    suspend fun getBanner(): WanResponse<List<BannerImg>> {
+        return withContext(defaultDispatcher) {
+            api.getBanner()
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.droidyu.wanandroid.di
 
-import android.util.Log
 import com.droidyu.wanandroid.network.Api
+import com.orhanobut.logger.Logger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,7 +42,7 @@ class NetworkModule {
         return OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val response = chain.proceed(chain.request())
-                Log.d("network", response.networkResponse().toString())
+                Logger.d(response.networkResponse().toString())
                 response.newBuilder().build()
             }
             .callTimeout(1, TimeUnit.MINUTES)

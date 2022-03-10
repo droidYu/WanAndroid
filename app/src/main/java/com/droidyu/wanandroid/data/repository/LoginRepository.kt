@@ -1,4 +1,4 @@
-package com.droidyu.wanandroid.data
+package com.droidyu.wanandroid.data.repository
 
 import com.droidyu.wanandroid.data.entity.User
 import com.droidyu.wanandroid.data.entity.WanResponse

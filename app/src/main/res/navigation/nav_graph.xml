@@ -20,4 +20,8 @@
         android:id="@+id/loginActivity"
         android:name="com.droidyu.wanandroid.ui.login.LoginActivity"
         android:label="LoginActivity" />
+    <fragment
+        android:id="@+id/treeFragment"
+        android:name="com.droidyu.wanandroid.ui.tree.TreeFragment"
+        android:label="TreeFragment" />
 </navigation>
