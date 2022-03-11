@@ -1,9 +1,6 @@
 package com.droidyu.wanandroid.network
 
-import com.droidyu.wanandroid.data.entity.ArticlePage
-import com.droidyu.wanandroid.data.entity.BannerImg
-import com.droidyu.wanandroid.data.entity.User
-import com.droidyu.wanandroid.data.entity.WanResponse
+import com.droidyu.wanandroid.data.entity.*
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -19,8 +16,17 @@ interface Api {
     @GET("article/list/{page}/json")
     suspend fun getArticle(@Path("page") page: Int): WanResponse<ArticlePage>
 
+    @GET("article/list/{page}/json")
+    suspend fun getArticleByCId(
+        @Path("page") page: Int,
+        @Query("cid") cId: String
+    ): WanResponse<ArticlePage>
+
     @GET("banner/json")
     suspend fun getBanner(): WanResponse<List<BannerImg>>
+
+    @GET("tree/json")
+    suspend fun getTree(): WanResponse<List<Tree>>
 
 
 }

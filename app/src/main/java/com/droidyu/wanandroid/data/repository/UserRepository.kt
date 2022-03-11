@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class LoginRepository @Inject constructor(
+class UserRepository @Inject constructor(
     private val api: Api,
     private val defaultDispatcher: CoroutineDispatcher
 ) {

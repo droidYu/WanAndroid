@@ -1,4 +1,4 @@
-package com.droidyu.wanandroid.ui.main.home
+package com.droidyu.wanandroid.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,8 +9,8 @@ import com.droidyu.wanandroid.data.entity.Article
 import com.droidyu.wanandroid.databinding.ItemArticleBinding
 import javax.inject.Inject
 
-class HomeArticleAdapter @Inject constructor(var data: List<Article>) :
-    RecyclerView.Adapter<HomeArticleAdapter.BindingHolder>() {
+class ArticleListAdapter @Inject constructor(var data: List<Article>) :
+    RecyclerView.Adapter<ArticleListAdapter.BindingHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder {

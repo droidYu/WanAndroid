@@ -7,13 +7,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.droidyu.wanandroid.data.entity.User
 import com.droidyu.wanandroid.data.entity.WanResult
-import com.droidyu.wanandroid.data.repository.LoginRepository
+import com.droidyu.wanandroid.data.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val repository: LoginRepository) : ViewModel() {
+class LoginViewModel @Inject constructor(private val repository: UserRepository) : ViewModel() {
     var userName = ObservableField("18314437549")
     var passWord = ObservableField("Zy@941020")
 
