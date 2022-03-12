@@ -64,13 +64,24 @@ class ChildTreeFragment(private var childTree: List<Tree>) : Fragment() {
                 }
             })
             rv.adapter = adapter
-//            tv.visibility=View.GONE
 
             if (childTree.isNotEmpty()) {
-                childTree[0].isSelected = true
+                var noSelected = true
+                var selectedId = ""
+                for (tree in childTree) {
+                    if (tree.isSelected) {
+                        noSelected = false
+                        selectedId = tree.id.toString()
+                    }
+                }
+                if (noSelected) {
+                    childTree[0].isSelected = true
+                    selectedId = childTree[0].id.toString()
+                }
+
                 childFragmentManager.beginTransaction().replace(
                     R.id.child_container,
-                    ArticleListFragment(childTree[0].id.toString())
+                    ArticleListFragment(selectedId)
                 ).commit()
             }
         }.root

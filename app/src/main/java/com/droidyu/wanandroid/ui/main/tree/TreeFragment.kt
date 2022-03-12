@@ -7,22 +7,20 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.droidyu.wanandroid.R
 import com.droidyu.wanandroid.data.entity.WanResult
 import com.droidyu.wanandroid.databinding.FragmentTreeBinding
-import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TreeFragment : Fragment() {
 
     private val viewModel: TreeViewModel by lazy { ViewModelProvider(this)[TreeViewModel::class.java] }
-
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,14 +45,20 @@ class TreeFragment : Fragment() {
             viewModel.trees.observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is WanResult.Success -> {
-                        pager.offscreenPageLimit = 3
                         val titleList = mutableListOf<String>()
                         val fragmentList = mutableListOf<Fragment>()
                         for (tree in result.data) {
                             titleList.add(tree.name)
                             fragmentList.add(ChildTreeFragment(tree.children))
                         }
-                        pager.adapter = TreeAdapter(childFragmentManager, titleList, fragmentList)
+                        pager.adapter = TreeAdapter(childFragmentManager, lifecycle, fragmentList)
+
+                        TabLayoutMediator(
+                            tab, pager
+                        ) { tab, position ->
+                            tab.text = titleList[position]
+                        }.attach()
+
                     }
                     is WanResult.Error -> {
 
@@ -67,19 +71,15 @@ class TreeFragment : Fragment() {
 
     class TreeAdapter(
         manager: FragmentManager,
-        private val titleList: MutableList<String>,
+        lifecycle: Lifecycle,
         private val fragmentList: MutableList<Fragment>
-    ) : FragmentPagerAdapter(manager) {
-        override fun getCount(): Int {
-            return titleList.size
+    ) : FragmentStateAdapter(manager, lifecycle) {
+        override fun getItemCount(): Int {
+            return fragmentList.size
         }
 
-        override fun getItem(position: Int): Fragment {
+        override fun createFragment(position: Int): Fragment {
             return fragmentList[position]
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            return titleList[position]
         }
     }
 
@@ -87,12 +87,12 @@ class TreeFragment : Fragment() {
     private fun initViews(fragmentTreeBinding: FragmentTreeBinding) {
         fragmentTreeBinding.run {
             tab.run {
-                setupWithViewPager(pager)
-                addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(pager))
+
             }
 
             pager.run {
-                addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab))
+                registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                })
             }
         }
     }

@@ -7,12 +7,12 @@
     <item
         android:id="@+id/treeFragment"
         android:icon="@drawable/tab_tree"
-        android:iconTint="@color/light_blue_700"
+        android:iconTint="@color/blue_700"
         android:title="体系" />
     <item
         android:id="@+id/mineFragment"
         android:icon="@drawable/tab_mine"
-        android:iconTint="@color/light_blue_700"
+        android:iconTint="@color/blue_700"
         android:title="我" />
 
 </menu>
