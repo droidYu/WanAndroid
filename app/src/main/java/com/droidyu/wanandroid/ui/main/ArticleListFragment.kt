@@ -16,10 +16,15 @@ import com.droidyu.wanandroid.databinding.FragmentArticleListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ArticleListFragment(private val cId: String) : Fragment() {
+class ArticleListFragment(private var cId: String) : Fragment() {
     private val adapter: ArticleListAdapter by lazy { ArticleListAdapter(mutableListOf()) }
 
     private val viewModel: ArticleListViewModel by lazy { ViewModelProvider(this)[ArticleListViewModel::class.java] }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.cId = cId
+    }
 
     constructor() : this("")
 
@@ -34,6 +39,7 @@ class ArticleListFragment(private val cId: String) : Fragment() {
             container,
             false
         ).apply {
+            cId = viewModel.cId
             initViews(this)
             observeData(this)
             viewModel.refresh(cId)

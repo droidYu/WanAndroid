@@ -37,13 +37,6 @@ class HomeFragment : Fragment() {
         }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.container, ArticleListFragment())
-            .commit()
-    }
-
     private fun observeData(binding: FragmentHomeBinding) {
         binding.apply {
             viewModel.bannerImgs.observe(viewLifecycleOwner) { result ->
@@ -68,6 +61,10 @@ class HomeFragment : Fragment() {
             srl.setOnRefreshListener {
                 refreshData(binding)
             }
+
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.container, ArticleListFragment())
+                .commit()
         }
 
     }

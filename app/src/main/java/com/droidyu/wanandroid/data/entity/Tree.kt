@@ -1,6 +1,7 @@
 package com.droidyu.wanandroid.data.entity
 
 data class Tree(
+    var isSelected: Boolean = false,
     val children: List<Tree>,
     val courseId: Int,
     val id: Int,

@@ -20,12 +20,8 @@ class TreeFragment : Fragment() {
 
     private val viewModel: TreeViewModel by lazy { ViewModelProvider(this)[TreeViewModel::class.java] }
 
-    private val titleList = mutableListOf<String>()
-    private val fragmentList = mutableListOf<Fragment>()
 
-    private val pagerAdapter: TreeAdapter by lazy {
-        TreeAdapter(childFragmentManager, titleList, fragmentList)
-    }
+
 
 
     override fun onCreateView(
@@ -51,13 +47,14 @@ class TreeFragment : Fragment() {
             viewModel.trees.observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is WanResult.Success -> {
-                        titleList.clear()
-                        fragmentList.clear()
+                        pager.offscreenPageLimit = 3
+                        val titleList = mutableListOf<String>()
+                        val fragmentList = mutableListOf<Fragment>()
                         for (tree in result.data) {
                             titleList.add(tree.name)
                             fragmentList.add(ChildTreeFragment(tree.children))
                         }
-                        pager.adapter = pagerAdapter
+                        pager.adapter = TreeAdapter(childFragmentManager, titleList, fragmentList)
                     }
                     is WanResult.Error -> {
 

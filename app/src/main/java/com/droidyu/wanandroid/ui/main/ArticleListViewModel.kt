@@ -13,6 +13,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ArticleListViewModel @Inject constructor(val repository: ArticleRepository) : ViewModel() {
+
+    lateinit var cId: String
+
     private val _articleList = MutableLiveData<WanResult<List<Article>>>()
     val articleList: LiveData<WanResult<List<Article>>> = _articleList
 
