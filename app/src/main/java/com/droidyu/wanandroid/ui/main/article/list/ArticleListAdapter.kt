@@ -1,4 +1,4 @@
-package com.droidyu.wanandroid.ui.main
+package com.droidyu.wanandroid.ui.main.article.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,6 +12,8 @@ import javax.inject.Inject
 class ArticleListAdapter @Inject constructor(var data: List<Article>) :
     RecyclerView.Adapter<ArticleListAdapter.BindingHolder>() {
 
+    lateinit var mListener: OnItemClickListener
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder {
         return BindingHolder(
@@ -24,8 +26,19 @@ class ArticleListAdapter @Inject constructor(var data: List<Article>) :
         )
     }
 
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        mListener = listener
+    }
+
+    interface OnItemClickListener {
+        fun onClick(article: Article)
+    }
+
     override fun onBindViewHolder(holder: BindingHolder, position: Int) {
         holder.bindData(data[position])
+        holder.itemView.setOnClickListener {
+            mListener.onClick(data[position])
+        }
     }
 
     override fun getItemCount(): Int {

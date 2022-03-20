@@ -8,18 +8,26 @@
             type="com.droidyu.wanandroid.data.entity.Tree" />
     </data>
 
-
-    <TextView
-        android:id="@+id/tv"
-        android:layout_margin="8dp"
-        android:background="@drawable/bg_item_child_tree"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="12dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="12dp"
-        android:paddingBottom="4dp"
-        android:text="@{tree.name}"
-        android:textSize="12sp" />
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/tv"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_item_child_tree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="4dp"
+            android:text="@{tree.name}"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
 
 </layout>

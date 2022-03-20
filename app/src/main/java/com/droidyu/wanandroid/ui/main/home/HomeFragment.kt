@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.droidyu.wanandroid.R
 import com.droidyu.wanandroid.data.entity.WanResult
 import com.droidyu.wanandroid.databinding.FragmentHomeBinding
-import com.droidyu.wanandroid.ui.main.ArticleListFragment
+import com.droidyu.wanandroid.ui.main.article.list.ArticleListFragment
 import com.youth.banner.indicator.CircleIndicator
 import dagger.hilt.android.AndroidEntryPoint
 

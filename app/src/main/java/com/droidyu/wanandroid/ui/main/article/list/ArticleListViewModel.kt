@@ -1,4 +1,4 @@
-package com.droidyu.wanandroid.ui.main
+package com.droidyu.wanandroid.ui.main.article.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

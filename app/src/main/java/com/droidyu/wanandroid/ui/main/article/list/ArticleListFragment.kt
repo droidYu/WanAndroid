@@ -1,5 +1,6 @@
-package com.droidyu.wanandroid.ui.main
+package com.droidyu.wanandroid.ui.main.article.list
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.droidyu.wanandroid.R
+import com.droidyu.wanandroid.data.entity.Article
 import com.droidyu.wanandroid.data.entity.WanResult
 import com.droidyu.wanandroid.databinding.FragmentArticleListBinding
+import com.droidyu.wanandroid.ui.main.article.detail.ArticleDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,6 +46,16 @@ class ArticleListFragment(private var cId: String) : Fragment() {
             initViews(this)
             observeData(this)
             viewModel.refresh(cId)
+
+            adapter.setOnItemClickListener(object : ArticleListAdapter.OnItemClickListener {
+                override fun onClick(article: Article) {
+                    val bundle = Bundle()
+                    bundle.putString("link", article.link)
+                    val intent = Intent(context, ArticleDetailActivity::class.java)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }
+            })
         }.root
     }
 

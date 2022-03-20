@@ -9,11 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SimpleItemAnimator
 import com.droidyu.wanandroid.R
 import com.droidyu.wanandroid.data.entity.Tree
 import com.droidyu.wanandroid.databinding.FragmentChildTreeBinding
-import com.droidyu.wanandroid.ui.main.ArticleListFragment
+import com.droidyu.wanandroid.ui.main.article.list.ArticleListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,7 +47,6 @@ class ChildTreeFragment(private var childTree: List<Tree>) : Fragment() {
 
             }
             rv.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-            (rv.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
             val adapter = ChildTreeAdapter(childTree)
             adapter.setItemClickListener(object : ChildTreeAdapter.OnClickListener {
                 override fun onItemClick(tree: Tree) {
